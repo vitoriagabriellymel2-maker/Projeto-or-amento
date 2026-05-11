@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Orçamento do Projeto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="8" height="8" rx="2" fill="white" opacity="0.9"/>
+          <rect x="13" y="3" width="8" height="8" rx="2" fill="white" opacity="0.6"/>
+          <rect x="3" y="13" width="8" height="8" rx="2" fill="white" opacity="0.6"/>
+          <rect x="13" y="13" width="8" height="8" rx="2" fill="white" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="logo-text"><strong>Orçamento</strong><span>do Projeto</span></div>
+    </div>
+    <div class="divider"></div>
+    <nav class="sidebar-nav">
+      <button class="nav-item active" id="btn-lista" onclick="trocarView('lista')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><polyline points="3 6 4 7 6 5"/><polyline points="3 12 4 13 6 11"/><polyline points="3 18 4 19 6 17"/></svg>
+        Lista de Tarefas
+      </button>
+      <button class="nav-item" id="btn-orc" onclick="trocarView('orcamento')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Orçamento
+      </button>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Configurações
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- VIEW: LISTA DE TAREFAS -->
+    <div class="view active" id="view-lista">
+      <div class="top-bar">
+        <h1 class="page-title">Lista de Tarefas</h1>
+        <button class="btn-primary" onclick="abrirModal()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Nova tarefa
+        </button>
+      </div>
+
+      <div class="table-header-row">
+        <span>Nome da tarefa</span>
+        <span>Horas</span>
+        <span>Custo/hora</span>
+        <span>Total</span>
+        <span>Ações</span>
+      </div>
+      <div id="lista-tarefas"></div>
+
+      <div class="summary-cards">
+        <div class="summary-card">
+          <div class="s-icon blue">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div><div class="s-value" id="totalTarefas">0</div><div class="s-label">Total de Tarefas</div></div>
+        </div>
+        <div class="summary-card">
+          <div class="s-icon orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div><div class="s-value" id="totalHorasCard">0h</div><div class="s-label">Total de Horas</div></div>
+        </div>
+        <div class="summary-card">
+          <div class="s-icon green">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <div><div class="s-value green" id="valorTotalCard">R$ 0,00</div><div class="s-label">Valor Total</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW: ORÇAMENTO -->
+    <div class="view" id="view-orcamento">
+      <div class="top-bar">
+        <h1 class="page-title">Orçamento do Projeto</h1>
+        <button class="btn-primary" onclick="window.print()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Gerar orçamento em PDF
+        </button>
+      </div>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Nome do projeto
+          </div>
+          <div class="info-value">Projeto Atual</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Status
+          </div>
+          <div class="info-value green">Em andamento</div>
+        </div>
+      </div>
+
+      <div class="budget-section">
+        <h2 class="section-title">Resumo do Orçamento</h2>
+        <div class="orc-header">
+          <span>Tarefa</span><span>Horas</span><span>Custo/hora</span><span>Subtotal</span><span>Desconto</span><span>Total</span>
+        </div>
+        <div id="lista-orcamento"></div>
+        <div class="extra-options">
+
+  <div class="option-group">
+    <label for="desconto">Desconto (%)</label>
+    <input type="number" id="desconto" placeholder="0" min="0" max="100" value="0">
+  </div>
+
+  <div class="option-group">
+    <label for="urgencia">Urgência</label>
+    <select id="urgencia">
+      <option value="0">Sem urgência</option>
+      <option value="20">Com urgência (+20%)</option>
+      <option value="50">Muita urgência (+50%)</option>
+    </select>
+  </div>
+
+</div>
+        <div class="orc-footer">
+          <div class="total-h">Total de horas: <span id="totalHorasOrc">0h</span></div>
+          <div class="total-block">
+            <div class="total-lbl">Valor Total do Projeto</div>
+            <div class="total-val green" id="totalFinal">R$ 0,00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="overlay" id="modal" onclick="fecharFora(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modalTitulo">Nova Tarefa</h2>
+      <button class="modal-close" onclick="fecharModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div><label>Nome da tarefa</label><input type="text" id="inputNome" placeholder="Ex: Desenvolvimento front-end"></div>
+      <div><label>Horas</label><input type="number" id="inputHoras" placeholder="Ex: 10" min="0"></div>
+      <div><label>Custo por hora (R$)</label><input type="number" id="inputCusto" placeholder="Ex: 100" min="0"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-sec" onclick="fecharModal()">Cancelar</button>
+      <button class="btn-primary" onclick="salvar()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
