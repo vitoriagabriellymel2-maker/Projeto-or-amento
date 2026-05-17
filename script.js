@@ -4,7 +4,6 @@ let editIdx = null;
   const save = t  => localStorage.setItem("tarefas", JSON.stringify(t));
   const fmt  = v  => "R$ " + Number(v).toFixed(2).replace(".", ",");
 
-  // ── NAVEGAÇÃO ──
   function trocarView(v) {
     document.querySelectorAll(".view").forEach(el => el.classList.remove("active"));
     document.querySelectorAll(".nav-item").forEach(el => el.classList.remove("active"));
@@ -43,16 +42,13 @@ let editIdx = null;
     document.getElementById("valorTotalCard").textContent  = fmt(totalV);
   }
 
-  // ── RENDER ORÇAMENTO ──
  function renderOrc() {
   const tarefas = get();
   const el = document.getElementById("lista-orcamento");
 
-  // desconto
   const descontoInput = document.getElementById("desconto");
   const descontoPerc = Number(descontoInput?.value || 0);
 
-  // urgência
   const urgenciaSelect = document.getElementById("urgencia");
   const urgenciaPerc = Number(urgenciaSelect?.value || 0);
 
@@ -91,7 +87,7 @@ let editIdx = null;
   document.getElementById("totalHorasOrc").textContent = totalH + "h";
   document.getElementById("totalFinal").textContent = fmt(totalFinal);
 }
-  // ── MODAL ──
+  
   function abrirModal() {
     editIdx = null;
     document.getElementById("modalTitulo").textContent = "Nova Tarefa";
