@@ -13,14 +13,12 @@
   --radius: 12px;
 }
 
-/* ── RESET ── */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* ── BASE ── */
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
@@ -28,14 +26,12 @@ body {
   font-size: 14px;
 }
 
-/* ── LAYOUT ── */
 .app {
   display: flex;
   height: 100vh;
   overflow: hidden;
 }
 
-/* ───────── SIDEBAR ───────── */
 .sidebar {
   width: 260px;
   background: var(--sidebar-bg);
@@ -44,7 +40,6 @@ body {
   flex-shrink: 0;
 }
 
-/* LOGO */
 .sidebar-logo {
   display: flex;
   align-items: center;
@@ -76,14 +71,12 @@ body {
   font-size: 12px;
 }
 
-/* DIVISOR */
 .divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.1);
   margin: 0 20px;
 }
 
-/* MENU */
 .sidebar-nav {
   padding: 16px 12px;
   flex: 1;
@@ -127,14 +120,12 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ───────── MAIN ───────── */
 .main {
   flex: 1;
   padding: 32px 36px;
   overflow-y: auto;
 }
 
-/* ───────── VIEWS ───────── */
 .view {
   display: none;
 }
@@ -143,7 +134,6 @@ body {
   display: block;
 }
 
-/* ───────── TOP BAR ───────── */
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -157,7 +147,6 @@ body {
   letter-spacing: -0.3px;
 }
 
-/* BOTÃO */
 .btn-primary {
   display: flex;
   align-items: center;
@@ -184,7 +173,6 @@ body {
   background: var(--blue-hover);
 }
 
-/* ───────── TABELA (LISTA) ───────── */
 .table-header-row,
 .task-row {
   display: grid;
@@ -246,7 +234,6 @@ body {
   color: #2563eb;
 }
 
-/* ───────── SUMMARY ───────── */
 .summary-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -291,7 +278,6 @@ body {
   margin-top: 4px;
 }
 
-/* ───────── INFO CARDS ───────── */
 .info-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -321,7 +307,6 @@ body {
   font-weight: 600;
 }
 
-/* ───────── ORÇAMENTO ───────── */
 .budget-section {
   padding: 24px;
   background: #fff;
@@ -359,7 +344,6 @@ body {
   border-bottom: none;
 }
 
-/* FOOTER */
 .orc-footer {
   display: flex;
   justify-content: space-between;
@@ -392,7 +376,6 @@ body {
   letter-spacing: -0.5px;
 }
 
-/* ───────── UTIL ───────── */
 .green {
   color: var(--green) !important;
 }
@@ -403,7 +386,6 @@ body {
   color: var(--muted);
 }
 
-/* ───────── MODAL ───────── */
 .overlay {
   display: none;
   position: fixed;
@@ -535,7 +517,6 @@ body {
   background: #f9fafb;
 }
 
-/* ───────── PRINT ───────── */
 @media print {
   .sidebar,
   .btn-primary {
@@ -551,7 +532,6 @@ body {
     overflow: visible;
   }
 }
-/* ───────── OPÇÕES EXTRAS ───────── */
 
 .extra-options {
   display: flex;
